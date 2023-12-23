@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>GUERRERO GYM</title>
+</head>
+<script>
+    function id(el){
+        return document.getElementById(el);
+};
+
+window.onload = function(){
+        id('peso').onkeyup = function(){
+            var v = this.value,
+                integer = v.split('.')[0];
+
+
+            v = v.replace(/\D/, "");
+            v = v.replace(/^[0]+/, "");
+
+            if(v.length <= 3 || !integer)
+            {
+                if(v.length === 1) v = '0.00' + v;
+                if(v.length === 2) v = '0.0' + v;
+                if(v.length === 3) v = '0.' + v;
+            } else {
+                v = v.replace(/^(\d{1,})(\d{3})$/, "$1.$2");
+            }
+
+            this.value = v;
+        }
+}; 
+
+window.onload = function(){
+        id('altura').onkeyup = function(){
+            var v = this.value,
+                integer = v.split('.')[0];
+
+            v = v.replace(/\D/, "");
+            v = v.replace(/^[0]+/, "");
+
+            this.value = v;
+        }
+};
+
+function habilitaQuadril() {
+    var sexo = document.getElementById("sexo").value;
+    document.getElementById("divQuadril").hidden = sexo == "feminino" ? false : true;
+};
+
+</script>
+
+    <body class="container">
+        <div class="form-group">
+            <h2 class="display-4 text-muted"> Cálculo de porcentagem de gordura </h2>
+            <small class="form-text text-muted"> Suas informações não serão compartilhadas. </small>
+        </div>
+        <form>
+            <div class="form-group">
+                <label>Sexo:</label>
+                <select class="form-control" id="sexo" required="true" onchange="habilitaQuadril()">
+                    <option value="" selected="true" ></option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+                <small class="form-text text-muted"> Insira o sexo que para melhor precisão no cálculo. </small>
+            </div>
+            <div id="divPeso" class="form-group">
+                <label>Peso:</label>
+                <input class="form-control" id="peso" placeholder="Insira seu peso (80.4)" required="true" />
+            </div>
+            <div id="divAltura" class="form-group">
+                <label>Altura:</label>
+                <input class="form-control" id="altura" placeholder="Insira sua altura (175cm)" required="true" />
+            </div>
+            <div id="divPescoco" class="form-group">
+                <label>Pescoço:</label>
+                <input class="form-control" id="pescoco" placeholder="Insira o tamanho do seu pescoço (10cm)" required="true" />
+            </div>
+            <div id="divCintura" class="form-group">
+                <label>Cintura:</label>
+                <input class="form-control" id="cintura" placeholder="Insira a circunferência de sua cintura (70cm)" required="true" />
+            </div>
+            <div id="divQuadril" class="form-group" hidden="true">
+                <label>Quadril:</label>
+                <input class="form-control" id="quadril" placeholder="Insira a circunferência do seu quadril (80cm)" required="true"/>
+                <small class="form-text text-muted">Apenas para o sexo feminino*</small>
+            </div>
+            <button type="submit" class="btn btn-success"> Calcular </button>
+        </form>
+    </body>
+</html>
