@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('assets/images/modelo_mas_3.jpg') center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+.container-form {
+    background: rgba(255, 255, 255, 0.8);; /* Cor de fundo com transparência */
+    border: 1px solid #ccc; /* Borda de 1 pixel sólido com cor cinza claro */
+    padding: 20px; /* Espaçamento interno para conteúdo dentro do container */
+    border-radius: 10px; /* Bordas arredondadas */
+    margin-top: 2%;
+}
