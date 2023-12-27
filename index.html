@@ -51,14 +51,14 @@
                 <input class="form-control" id="quadril" placeholder="Insira a circunferência do seu quadril (80cm)" onpointerleave="ValidaValores(this.id)"/>
                 <small class="form-text text-muted">Apenas para o sexo feminino*</small>
             </div>
-            <button type="submit" class="btn btn-success" onclick="calcularGorduraCorporal()"> Calcular </button>
+            <button type="button" class="btn btn-success" onclick=" calcularGorduraCorporal()"> Calcular </button>
         </form>
       </div>
 
-      <!-- <div id="popup" class="popup-container">
-        <div class="result" id="resultPlaceholder"></div>
-        <img id="imagePreview" src="/assets/images/tabela_gordura.png" class="popup-image" alt="Imagem" />
-        <button onclick="closePopup()">Fechar</button>
+      <!-- <div id="popup" style="display: block;" class="popup-container">
+        <button class="button-close" onclick="closePopup()">X</button>
+        <div class="result" id="resultPlaceholder">Seu resultado é 16.6</div>
+        <img id="imagePreview" src="assets/images/tabela_gordura.png" class="popup-image" alt="Imagem" />
     </div> -->
     </body>
 </html>

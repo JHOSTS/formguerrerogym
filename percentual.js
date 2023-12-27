@@ -37,7 +37,7 @@ if(!document.getElementById("divQuadril").hidden)
     document.getElementById("quadril").setAttribute("required", "true");
 };
 
-function calcularGorduraCorporal() {
+function calcularGorduraCorporal(e) {
 // Fórmula para calcular a gordura corporal para homens
 // Gordura corporal (%) = 86.010 × log10(cintura - pescoco) - 70.041 × log10(altura) + 36.76
 // Fórmula para calcular a gordura corporal para mulheres
@@ -50,6 +50,8 @@ let cintura = document.getElementById("cintura").value;
 let pescoco = document.getElementById("pescoco").value;
 let sexo = document.getElementById("sexo").value;
 let quadril = document.getElementById("quadril").value;
+
+// e.preventDefault(); 
 
 if(altura != '' && peso != '' && cintura != '' && pescoco != '' && sexo != ''){
 if(document.getElementById("divQuadril").hidden === false){
@@ -84,27 +86,18 @@ function openDynamicPopup(valorGordura) {
     // Cria um elemento div para o pop-up
     var popupContainer = document.createElement('div');
     popupContainer.className = 'popup-container';
+    popupContainer.id = 'popup';
 
     // Cria um elemento div para o resultado
     var resultElement = document.createElement('div');
     resultElement.className = 'result';
-    resultElement.textContent = valorGordura;
+    resultElement.textContent = "Seu resultado é: " + valorGordura;
     popupContainer.appendChild(resultElement);
 
     // Cria um elemento input para a imagem
-    var inputImage = document.createElement('input');
-    inputImage.type = 'file';
-    inputImage.accept = 'image/*';
-    inputImage.onchange = function (event) {
-        previewImage(event);
-    };
-    popupContainer.appendChild(inputImage);
-
-    // Cria um elemento img para a visualização da imagem
-    var imagePreview = document.createElement('img');
-    imagePreview.className = 'popup-image';
-    imagePreview.alt = 'Imagem';
-    popupContainer.appendChild(imagePreview);
+    var image = document.createElement('img');
+    image.src = 'assets/images/tabela_gordura.png';
+    popupContainer.appendChild(image);
 
     // Cria um elemento button para fechar o pop-up
     var closeButton = document.createElement('button');
