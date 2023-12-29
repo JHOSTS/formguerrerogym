@@ -37,7 +37,7 @@ if(!document.getElementById("divQuadril").hidden)
     document.getElementById("quadril").setAttribute("required", "true");
 };
 
-function calcularGorduraCorporal(e) {
+function calcularGorduraCorporal() {
 // Fórmula para calcular a gordura corporal para homens
 // Gordura corporal (%) = 86.010 × log10(cintura - pescoco) - 70.041 × log10(altura) + 36.76
 // Fórmula para calcular a gordura corporal para mulheres
@@ -50,68 +50,37 @@ let cintura = document.getElementById("cintura").value;
 let pescoco = document.getElementById("pescoco").value;
 let sexo = document.getElementById("sexo").value;
 let quadril = document.getElementById("quadril").value;
-
-// e.preventDefault(); 
-
-if(altura != '' && peso != '' && cintura != '' && pescoco != '' && sexo != ''){
-if(document.getElementById("divQuadril").hidden === false){
-    if(quadril === ''){
-        alert('Medida do quadril não preenchida'); 
-        return;
-    }
-}
-}
+let quadrilDesabilitado = quadrilDesabilitado = document.getElementById("divQuadril").hidden;
 
 if (sexo.toLowerCase() === 'masculino') {
-gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;
+    gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;
 } else if (sexo.toLowerCase() === 'feminino') {
-gorduraCorporal = 163.205 * Math.log10(cintura + quadril - pescoco) - 97.684 * Math.log10(altura) - 78.387;
+    gorduraCorporal = 163.205 * Math.log10(cintura + quadril - pescoco) - 97.684 * Math.log10(altura) - 78.387;
 }
 
-openDynamicPopup(gorduraCorporal.toFixed(2).toString());
-//alert("Resultado: " + gorduraCorporal.toFixed(2).toString()); // Retornando o valor da gordura corporal com duas casas decimais
+if (sexo === "") {
+    alert("Por favor, selecione o campo Sexo.");
+} else if (peso === "") {
+    alert("Por favor, preencha o campo Peso.");
+} else if (altura === "") {
+    alert("Por favor, preencha o campo Altura.");
+} else if (pescoco === "") {
+    alert("Por favor, preencha o campo Pescoço.");
+} else if (cintura === "") {
+    alert("Por favor, preencha o campo Cintura.");
+} else if (quadril === "" && !quadrilDesabilitado) {
+    alert("Por favor, preencha o campo Quadril.");
+}
+else
+    openPopup(gorduraCorporal.toFixed(2).toString());
 }
 
 function openPopup(valorGordura) {
-    // document.getElementById("resultPlaceholder").innerText = valorGordura;
+    document.getElementById("resultPlaceholder").innerText = "Seu resultado é: " + valorGordura;
     document.getElementById('popup').style.display = 'block';
 }
 
 // Função para fechar o pop-up
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
-}
-
-function openDynamicPopup(valorGordura) {
-    // Cria um elemento div para o pop-up
-    var popupContainer = document.createElement('div');
-    popupContainer.className = 'popup-container';
-    popupContainer.id = 'popup';
-
-    // Cria um elemento div para o resultado
-    var resultElement = document.createElement('div');
-    resultElement.className = 'result';
-    resultElement.textContent = "Seu resultado é: " + valorGordura;
-    popupContainer.appendChild(resultElement);
-
-    // Cria um elemento input para a imagem
-    var image = document.createElement('img');
-    image.src = 'assets/images/tabela_gordura.png';
-    popupContainer.appendChild(image);
-
-    // Cria um elemento button para fechar o pop-up
-    var closeButton = document.createElement('button');
-    closeButton.textContent = 'Fechar';
-    closeButton.onclick = function () {
-        document.body.removeChild(popupContainer);
-    };
-    popupContainer.appendChild(closeButton);
-
-    // Adiciona o pop-up ao corpo do documento
-    document.body.appendChild(popupContainer);
-
-    // Exibe o pop-up
-    popupContainer.style.display = 'block';
-
-    openPopup();
 }
