@@ -60,7 +60,7 @@ let Altura = Math.log10(altura);
 if (sexo.toLowerCase() === 'masculino') {
     gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;
 } else if (sexo.toLowerCase() === 'feminino') {
-    gorduraCorporal = 163.205 * Math.log10(cintura + quadril - pescoco) - 97.684 * Math.log10(altura) - 78.387;
+    gorduraCorporal = (163.205 * Math.log10(cintura + quadril - pescoco) - 97.684 * Math.log10(altura) - 78.387)/10;
 }
 
 if (sexo === "") {
