@@ -39,9 +39,9 @@ if(!document.getElementById("divQuadril").hidden)
 
 function calcularGorduraCorporal() {
 // Fórmula para calcular a gordura corporal para homens
-// Gordura corporal (%) = 86.010 × log10(cintura - pescoco) - 70.041 × log10(altura) + 36.76
+// Gordura corporal (%) = 86.010 × 10(cintura - pescoco) - 70.041 × 10(altura) + 36.76
 // Fórmula para calcular a gordura corporal para mulheres
-// Gordura corporal (%) = 163.205 × log10(cintura + quadril - pescoco) - 97.684 × log10(altura) - 78.387
+// Gordura corporal (%) = 163.205 × 10(cintura + quadril - pescoco) - 97.684 × 10(altura) - 78.387
 
 let gorduraCorporal; 
 let altura = document.getElementById("altura").value; 
@@ -51,6 +51,11 @@ let pescoco = document.getElementById("pescoco").value;
 let sexo = document.getElementById("sexo").value;
 let quadril = document.getElementById("quadril").value;
 let quadrilDesabilitado = document.getElementById("divQuadril").hidden;
+
+let Cintura = Math.log10(cintura);
+let Quadril = Math.log10(quadril);
+let Pescoco = Math.log10(pescoco);
+let Altura = Math.log10(altura);
 
 if (sexo.toLowerCase() === 'masculino') {
     gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;

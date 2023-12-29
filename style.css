@@ -72,8 +72,18 @@ body {
 }
 
 .wpp-qrcode{
-    align-content: center;
+    text-align: center;
     width: 30%;
     height: 30%;
-    padding-left: 2px;
+    margin-left: 35%;
+    padding-top: 5%;
+}
+
+.link-whatsapp{
+    text-align: center;
+}
+
+.link-whatsapp:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
