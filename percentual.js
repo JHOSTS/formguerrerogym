@@ -50,7 +50,7 @@ let cintura = document.getElementById("cintura").value;
 let pescoco = document.getElementById("pescoco").value;
 let sexo = document.getElementById("sexo").value;
 let quadril = document.getElementById("quadril").value;
-let quadrilDesabilitado = quadrilDesabilitado = document.getElementById("divQuadril").hidden;
+let quadrilDesabilitado = document.getElementById("divQuadril").hidden;
 
 if (sexo.toLowerCase() === 'masculino') {
     gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;

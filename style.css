@@ -43,7 +43,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 2;
     border-radius: 15px;
-    overflow: auto; 
+    overflow-y: auto;
 }
 
 .result {
@@ -69,4 +69,11 @@ body {
     transform: scale(1.2);
     background-color: #ff7070ab;
     cursor: pointer;
+}
+
+.wpp-qrcode{
+    align-content: center;
+    width: 30%;
+    height: 30%;
+    padding-left: 2px;
 }
