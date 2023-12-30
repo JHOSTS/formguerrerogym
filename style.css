@@ -87,3 +87,16 @@ body {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.copy-button{
+    border: none;
+    background-color: transparent;
+    color: gray;
+    height: 20px;
+    font-size: 18px;
+}
+
+.copy-button:hover{
+    transform: scale(1.1);
+    color: rgb(80, 79, 79);
+}

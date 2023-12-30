@@ -52,11 +52,6 @@ let sexo = document.getElementById("sexo").value;
 let quadril = document.getElementById("quadril").value;
 let quadrilDesabilitado = document.getElementById("divQuadril").hidden;
 
-let Cintura = Math.log10(cintura);
-let Quadril = Math.log10(quadril);
-let Pescoco = Math.log10(pescoco);
-let Altura = Math.log10(altura);
-
 if (sexo.toLowerCase() === 'masculino') {
     gorduraCorporal = 86.010 * Math.log10(cintura - pescoco) - 70.041 * Math.log10(altura) + 36.76;
 } else if (sexo.toLowerCase() === 'feminino') {
@@ -80,12 +75,57 @@ else
     openPopup(gorduraCorporal.toFixed(2).toString());
 }
 
+function adicionarTagsDinamicamente() {
+    // Criação do botão
+    var button = document.createElement("button");
+    button.className = "copy-button";
+    button.onclick = copiarConteudo;
+
+    // Criação do ícone dentro do botão
+    var span = document.createElement("span");
+    span.className = "glyphicon glyphicon-copy";
+    span.setAttribute("aria-hidden", "true");
+
+    // Adiciona o ícone dentro do botão
+    button.appendChild(span);
+
+    // Adiciona o botão à div com o ID "resultPlaceholder"
+    document.getElementById("resultPlaceholder").appendChild(button);
+
+}
+
 function openPopup(valorGordura) {
-    document.getElementById("resultPlaceholder").innerText = "Seu resultado é: " + valorGordura;
+    document.getElementById("resultPlaceholder").innerText = "Resultado: " + valorGordura;
+    adicionarTagsDinamicamente();
     document.getElementById('popup').style.display = 'block';
 }
 
 // Função para fechar o pop-up
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
+}
+
+function copiarConteudo() {
+    // Seleciona o conteúdo da div
+    var conteudo = document.getElementById("resultPlaceholder").textContent;
+
+    // Cria um elemento de texto temporário
+    var elementoTemporario = document.createElement("textarea");
+
+    // Define o valor do elemento de texto para o conteúdo que você deseja copiar
+    elementoTemporario.value = conteudo;
+
+    // Adiciona o elemento de texto ao DOM
+    document.body.appendChild(elementoTemporario);
+
+    // Seleciona o conteúdo do elemento de texto
+    elementoTemporario.select();
+
+    // Executa o comando de cópia
+    document.execCommand("copy");
+
+    // Remove o elemento de texto temporário
+    document.body.removeChild(elementoTemporario);
+
+    alert("Resultado copiado!");
 }
